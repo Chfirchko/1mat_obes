@@ -4,10 +4,15 @@ import numpy as np
 def Him(x1, x2):
     return (x1 ** 2 + x2 - 11) ** 2 + (x1 + x2 ** 2 - 7)
 
+def Example1(x1, x2):
+    return x1 ** 2 - x1 * x2 + 3 * x2 ** 2 - x1
+
 
 def Example(x):
     x1 = x[0]
     x2 = x[1]
+    #return x1 ** 2 - x1 * x2 + 3 * x2 ** 2 - x1
+
     return 2.8 * x2 ** 2 + 1.9 * x1 + 2.7 * x1 ** 2 + 1.6 - 1.9 * x2
 
 
@@ -38,14 +43,13 @@ table[2][2] = Example(table[2][1])
 q = 1
 qwerty = 0
 while qwerty != 15:
-    if table[len(table) - 1][0][0] == qwerty + 2:
-        pass
+    int(qwerty)
     two_smallest_dicks = []
     print('---------------------------------------------------')
     print('Номер эпохи: ', qwerty)
     print('---------------------------------------------------')
     big_dick = 0
-    max = 0
+    max = -1000
     # print()
     # print(max)
     # for i in table:
@@ -90,10 +94,7 @@ while qwerty != 15:
             two_biggiest_dicks.pop(0)
     weight[0] = weight[0] / n
     weight[1] = weight[1] / n
-    print(n)
     print('weight = ', weight)
-    print('table[big_dick][1][0] = ', table[big_dick][1][0])
-    print('table[big_dick][1][1] = ', table[big_dick][1][1])
     mirror = [2 * weight[0] - table[big_dick][1][0], 2 * weight[1] - table[big_dick][1][1]]
     table.append([[3 + qwerty], mirror, 0, 0])
     print('mirror = ', mirror)
@@ -109,8 +110,6 @@ while qwerty != 15:
                 print(i)
             print(qwerty1)
             table[qwerty + 3 - qwerty1][2] = Example(table[qwerty + 3 - qwerty1][1])
-    for zxc in table:
-        print(zxc)
 
     three_biggiest_dicks = []
     nombers_of_three_biggiest_dicks = []
@@ -119,58 +118,75 @@ while qwerty != 15:
         three_biggiest_dicks.append(item[0])
         nombers_of_three_biggiest_dicks.append(three_biggiest_dicks)
         three_biggiest_dicks = []
-    print('gfdsasa', nombers_of_three_biggiest_dicks, 'gfdwssad')
     nombers_of_three_biggiest_dicks = sorted(nombers_of_three_biggiest_dicks, key=lambda x: x[0])
     nombers_of_three_biggiest_dicks.pop()
-    print('Вершины и номера этих вершин: ', nombers_of_three_biggiest_dicks)
-    print()
-    print(table[len(table) - 1][2])
-    print(table[two_smallest_dicks[1][1][0]][2])
-    print(len(table))
+    print('Вершины и номера этих вершин: ', nombers_of_three_biggiest_dicks, sep='\n')
+
     if table[len(table) - 1][2] > max:
         table.pop()
-        print('жопа ахахахаха', table[nombers_of_three_biggiest_dicks[0][1][0]][1][0])
-        print(table[len(table) - 1][1][0])
+        print('qwertyytrewq = ', nombers_of_three_biggiest_dicks[0][1][0] - pop_top)
+        print('жопа ахахахаха', table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][0])
 
-        a = table[len(table) - 1][1][0] - table[nombers_of_three_biggiest_dicks[0][1][0]][1][0]
+        a = table[len(table) - 1][1][0] - table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][0]
         b = 0.5 * a
-        c = table[nombers_of_three_biggiest_dicks[0][1][0]][1][0] + b
+        c = table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][0] + b
 
-        a = table[len(table) - 1][1][1] - table[nombers_of_three_biggiest_dicks[0][1][0]][1][1]
+        a = table[len(table) - 1][1][1] - table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][1]
         b = 0.5 * a
-        c1 = table[nombers_of_three_biggiest_dicks[0][1][0]][1][1] + b
+        c1 = table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][1] + b
 
         table.append([[qwerty + 4], [c, c1], 0, 0])
-        table[qwerty + 3][2] = Example(table[qwerty + 3][1])
+        table[qwerty + 3 - pop_top][2] = Example(table[qwerty + 3 - pop_top][1])
 
-        a = table[len(table) - 3][1][0] - table[nombers_of_three_biggiest_dicks[0][1][0]][1][0]
+        a = table[len(table) - 3 - pop_top][1][0] - table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][0]
         b = 0.5 * a
-        c = table[nombers_of_three_biggiest_dicks[0][1][0]][1][0] + b
+        c = table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][0] + b
 
-        a = table[len(table) - 3][1][1] - table[nombers_of_three_biggiest_dicks[0][1][0]][1][1]
+        a = table[len(table) - 3 - pop_top][1][1] - table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][1]
         b = 0.5 * a
-        c1 = table[nombers_of_three_biggiest_dicks[0][1][0]][1][1] + b
+        c1 = table[nombers_of_three_biggiest_dicks[0][1][0] - pop_top][1][1] + b
         table.append([[qwerty + 5], [c, c1], 0, 0])
-        table[qwerty + 4][2] = Example(table[qwerty + 4][1])
+        table[qwerty + 4 - pop_top][2] = Example(table[qwerty + 4 - pop_top][1])
         qwerty += 2
         qwerty1 += 1
-    #     Center_weight = []
-    #     Center_weight.append(1 / 3 * float(
-    #         table[nombers_of_three_biggiest_dicks[2][1][0]][1][0] + table[nombers_of_three_biggiest_dicks[1][1][0]][1][0] +
-    #         table[nombers_of_three_biggiest_dicks[0][1][0]][1][0]))
-    #     Center_weight.append(1 / 3 * float(
-    #         table[nombers_of_three_biggiest_dicks[2][1][0]][1][1] + table[nombers_of_three_biggiest_dicks[1][1][0]][1][1] +
-    #         table[nombers_of_three_biggiest_dicks[0][1][0]][1][1]))
-    #     print('центр тяжести симплекса = ', Center_weight)
-    #     print('Полученная точка = ', Example(Center_weight))
-    #     print('проверка условие окончание поиска:')
-    #     if abs(table[nombers_of_three_biggiest_dicks[0][1][0]][2] - Example(Center_weight)) < e or abs(
-    #             table[nombers_of_three_biggiest_dicks[1][1][0]][2] - Example(Center_weight)) < e or abs(
-    #             table[nombers_of_three_biggiest_dicks[2][1][0]][2] - Example(Center_weight)) < e:
-    #         print('Это все!!!')
-    #     print(abs(table[nombers_of_three_biggiest_dicks[0][1][0]][2] - Example(Center_weight)), '> e')
-    #     print(abs(table[nombers_of_three_biggiest_dicks[1][1][0]][2] - Example(Center_weight)), '> e')
-    #     print(abs(table[nombers_of_three_biggiest_dicks[2][1][0]][2] - Example(Center_weight)), '> e')
+        pop_top += 1
+        for i in table:
+            if i[2] > max and i[3] == 0:
+                max = i[2]
+                big_dick = i[0][0]
+        print('big dick123 = ', big_dick)
+        print('max = ', max)
+        for i in table:
+            if i[2] == max:
+                i[3] = q
+        q += 1
+
+        Center_weight = []
+        print('nombers:', nombers_of_three_biggiest_dicks[2][1][0], nombers_of_three_biggiest_dicks[1][1][0], nombers_of_three_biggiest_dicks[0][1][0])
+        Center_weight.append(1 / 3 * float(
+            table[nombers_of_three_biggiest_dicks[2][1][0]][1][0] + table[nombers_of_three_biggiest_dicks[1][1][0]][1][0] +
+            table[nombers_of_three_biggiest_dicks[0][1][0]][1][0]))
+        Center_weight.append(1 / 3 * float(
+            table[nombers_of_three_biggiest_dicks[2][1][0]][1][1] + table[nombers_of_three_biggiest_dicks[1][1][0]][1][1] +
+            table[nombers_of_three_biggiest_dicks[0][1][0]][1][1]))
+        print('центр тяжести симплекса = ', Center_weight)
+        print('Полученная точка = ', Example(Center_weight))
+        print(table[nombers_of_three_biggiest_dicks[2][1][0]][2] - Example(Center_weight))
+        print(Example(Center_weight))
+        print(nombers_of_three_biggiest_dicks[0][1][0])
+        print('проверка условие окончание поиска:')
+        print('table:', table[nombers_of_three_biggiest_dicks[0][1][0]][2], table[nombers_of_three_biggiest_dicks[1][1][0]][2], table[nombers_of_three_biggiest_dicks[2][1][0]][2], sep = "\n")
+        if abs(table[nombers_of_three_biggiest_dicks[0][1][0]][2] - Example(Center_weight)) < e or abs(
+                table[nombers_of_three_biggiest_dicks[1][1][0]][2] - Example(Center_weight)) < e or abs(
+                table[nombers_of_three_biggiest_dicks[2][1][0]][2] - Example(Center_weight)) < e:
+            print(abs(table[nombers_of_three_biggiest_dicks[0][1][0]][2] - Example(Center_weight)), '< e')
+            print(abs(table[nombers_of_three_biggiest_dicks[1][1][0]][2] - Example(Center_weight)), '< e')
+            print(abs(table[nombers_of_three_biggiest_dicks[2][1][0]][2] - Example(Center_weight)), '< e')
+            print('Это все!!!')
+            break
+        print(abs(table[nombers_of_three_biggiest_dicks[0][1][0]][2] - Example(Center_weight)), '> e')
+        print(abs(table[nombers_of_three_biggiest_dicks[1][1][0]][2] - Example(Center_weight)), '> e')
+        print(abs(table[nombers_of_three_biggiest_dicks[2][1][0]][2] - Example(Center_weight)), '> e')
     # # --------------------------------------------------------------------------------------------------------------
 
     print()
