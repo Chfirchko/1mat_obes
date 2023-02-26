@@ -14,6 +14,7 @@ table = [[0, [1, 1], 0]]
 '''
 
 
+
 def Str_count(s):
     s = ''.join(s.split())
     s = compile(s, 'string', 'eval')
