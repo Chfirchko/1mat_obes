@@ -25,7 +25,7 @@ def Func(x, y):
 x, y = sp.symbols('x, y')
 func = x ** 2 - x * y + 3 * y ** 2 - x
 
-e = 0.1
+e = 0.0001
 h = 0.4
 table = [[0, [0, 0], 0]]
 table[0][2] = Func(table[0][1][0], table[0][1][1])

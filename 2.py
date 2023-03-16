@@ -2,10 +2,10 @@ import sympy
 
 
 def Func(x, y):
-    #return x ** 2 - x * y + 3 * y ** 2 - x
-    return 2.8 * y ** 2 + 1.9 * x + 2.7 * x ** 2 + 1.6 - 1.9 * y
+    return x ** 2 - x * y + 3 * y ** 2 - x
+    #return 2.8 * y ** 2 + 1.9 * x + 2.7 * x ** 2 + 1.6 - 1.9 * y
 
-e = 0.09
+e = 0.0001
 h = 0.2
 d = 2
 min = 10000
@@ -42,15 +42,13 @@ table[0][1] = Func(table[0][0][0], table[0][0][1])
 #     table[2][2] = Func(table[2][1][0], table[2][1][1])
 for i in table:
     print(i)
-print()
 table1 = []
 item = 0
 kol = 0
 while h > e:
+    print('h =', h)
     table1.clear()
     item = len(table) - 1
-    if item > 7:
-        break
     qwerty = table[item][1]
     table1.append([[table[item][0][0] + h, table[item][0][1]], 0])
     table1.append([[table[item][0][0], table[item][0][1] + h], 0])
@@ -78,10 +76,9 @@ while h > e:
             table.pop()
 
     item += 1
-    print()
-    for i in table:
-        print(i)
-    print()
     for i in table1:
         table1.pop()
     kol = 0
+print()
+for i in table:
+    print(i)

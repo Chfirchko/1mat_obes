@@ -26,8 +26,9 @@ def Str_count_h(s):
     print(s)
     perviy = s[:s.find("*")]
     vtoroy = s[s.find("-") + 1:]
-    perviy = float(perviy)
-    vtoroy = float(vtoroy)
+    print('qwetrverewqgeqrgv   ', perviy, vtoroy, sep='\n')
+    perviy = round(float(perviy), 10)
+    vtoroy = round(float(vtoroy), 10)
     return vtoroy / perviy
 
 
@@ -38,7 +39,7 @@ def Func(x, y):
 x, y, h = sp.symbols('x, y, h')
 func = x ** 2 - x * y + 3 * y ** 2 - x
 
-e = 0.1
+e = 0.0001
 he = 0.4
 table = [[0, [0, 0], 0]]
 table[0][2] = Func(table[0][1][0], table[0][1][1])

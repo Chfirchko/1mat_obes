@@ -14,7 +14,7 @@ table = [[0, [1, 1], 0]]
 '''
 
 def Func(x, y):
-    return 2.8 * y ** 2 + 1.9 * x + 2.7 * x ** 2 + 1.6 - 1.9 * y
+    return x ** 2 - x * y + 3 * y ** 2 - x
 
 
 def Str_count(s):
@@ -24,9 +24,9 @@ def Str_count(s):
 
 
 x, y = sp.symbols('x, y')
-func = 2.8 * y ** 2 + 1.9 * x + 2.7 * x ** 2 + 1.6 - 1.9 * y
-e = 0.01
-table = [[0, [-0.25, 0.5], 0]]
+func = x ** 2 - x * y + 3 * y ** 2 - x
+e = 0.0001
+table = [[0, [0, 0], 0]]
 table[0][2] = Func(table[0][1][0], table[0][1][1])
 Norm = 100
 i = 0
